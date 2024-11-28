@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 
@@ -24,26 +25,25 @@ public class CalculatorTest {
 	@BeforeAll
 	static void setup()
 	{
-		System.out.println("execute @BeforeAll method");
+		
 	}
 	
 	@AfterAll
 	static void cleanUp()
 	{
-		System.out.println("execute @AfterAll method");
+		
 	}
 
 	@BeforeEach
 	void beforeEachMethod() {
 		
-		System.out.println("execute @BeforeEach method");
 		calculator=new Calculator();
 	}
 	
 	@AfterEach
 	void afterEachMethod()
 	{
-		System.out.println("execute @AfterEach method");
+		
 	}
 	
 	
@@ -55,16 +55,17 @@ public class CalculatorTest {
 
 	@ParameterizedTest
 	@MethodSource("subtractionInputParameters")
-	void test_subtraction(int a , int b ,int c)
+	void test_subtraction(int minuend , int subtrahend ,int expectedResult)
 	{
-		assertEquals(c, calculator.subtraction(a, b));
+		assertEquals(expectedResult, calculator.subtraction(minuend, subtrahend ));
 	}
 
 	
-	@Test
-	void test_multiplication()
+	@ParameterizedTest
+	@CsvSource({ "3,4,12","5,5,25"})
+	void test_multiplication(int multiplicand , int multiplier , int expectedResult)
 	{	
-		assertEquals(16, calculator.multiplication(4,4) ,()-> "it does not produce expected output");	
+		assertEquals(expectedResult, calculator.multiplication(multiplicand,multiplier) ,()-> "it does not produce expected output");	
 	}
 	
 	@DisplayName(" division by 0 ")
@@ -80,7 +81,7 @@ public class CalculatorTest {
 		return Stream.of(
 				Arguments.of(10,9,1),
 				Arguments.of(25,23,2),
-				Arguments.of(12,7,4)
+				Arguments.of(12,7,5)
 				);
 	}
 	
