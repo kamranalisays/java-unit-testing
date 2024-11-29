@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -67,6 +68,18 @@ public class CalculatorTest {
 	{	
 		assertEquals(expectedResult, calculator.multiplication(multiplicand,multiplier) ,()-> "it does not produce expected output");	
 	}
+	
+
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "/multiplicationTestValues.csv")
+	void test_multiplication_values_from_csv_file(int multiplicand , int multiplier , int expectedResult)
+	{	
+		assertEquals(expectedResult, calculator.multiplication(multiplicand,multiplier) ,()-> "it does not produce expected output");	
+	}
+	
+	
+	
 	
 	@DisplayName(" division by 0 ")
 	@Test
