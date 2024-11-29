@@ -1,5 +1,7 @@
 package org.expandablesupportservices;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,6 +18,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 public class CalculatorTest {
@@ -69,7 +72,6 @@ public class CalculatorTest {
 		assertEquals(expectedResult, calculator.multiplication(multiplicand,multiplier) ,()-> "it does not produce expected output");	
 	}
 	
-
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/multiplicationTestValues.csv")
@@ -89,6 +91,14 @@ public class CalculatorTest {
 	}
 	
 
+	@ParameterizedTest
+	@ValueSource(ints = {5,7})
+	void test_ValueSource(int value)
+	{
+		assertNotNull(value);
+	}
+	
+	
 	private static Stream<Arguments>  subtractionInputParameters()
 	{
 		return Stream.of(
