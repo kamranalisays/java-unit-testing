@@ -8,21 +8,15 @@
 
   1) @Test
 
-# Parametrized Test Annotations
-
-   @ParameterizedTest
+# Parametrized Test Annotations   @ParameterizedTest
+ 
    @MethodSource
-
-   @ParameterizedTest
    @CsvSource
-
-   @ParameterizedTest
    @CsvFileSource
-
-   @ParameterizedTest
    @ValueSource
 
 # Repeated Test Annotation
+
   @RepeatedTest
 
    
