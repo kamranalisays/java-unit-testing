@@ -8,7 +8,7 @@
 
   1) @Test
 
-#  Use @ParameterizedTest Test Annotations with following Annotations
+#  Use @ParameterizedTest with following Annotations
  
  1) @MethodSource
  2) @CsvSource
