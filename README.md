@@ -8,12 +8,12 @@
 
   1) @Test
 
-# Parametrized Test Annotations   @ParameterizedTest
+#  Use @ParameterizedTest Test Annotations with following Annotations
  
-   @MethodSource
-   @CsvSource
-   @CsvFileSource
-   @ValueSource
+ 1) @MethodSource
+ 2) @CsvSource
+ 3) @CsvFileSource
+ 4) @ValueSource
 
 # Repeated Test Annotation
 
